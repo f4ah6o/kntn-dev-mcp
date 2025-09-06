@@ -30,7 +30,7 @@ export class MCPServer {
 
 	constructor(storage: FileStorageService, updateService: UpdateService) {
 		this.resources = new ResourceHandler(storage);
-		this.tools = new ToolHandler(storage, updateService);
+		this.tools = new ToolHandler();
 	}
 
 	async start(): Promise<void> {
