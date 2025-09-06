@@ -1,0 +1,62 @@
+[
+  {
+    "id": "bulk-operations",
+    "title": "Use Bulk Operations for Better Performance", 
+    "summary": "When working with many records, use bulk APIs instead of individual requests",
+    "content": "# Bulk Operations for Performance\n\nWhen you need to process multiple records, avoid making individual API calls for each record. Instead, use kintone's bulk operations:\n\n## Bulk Record Creation\n```javascript\nconst records = [\n  { field1: { value: 'data1' } },\n  { field1: { value: 'data2' } },\n  // ... up to 100 records\n];\n\nconst response = await kintone.api(\n  kintone.api.url('/k/v1/records.json', true),\n  'POST',\n  { app: APP_ID, records: records }\n);\n```\n\n## Benefits\n- Faster execution (fewer HTTP requests)\n- Better resource utilization\n- Reduced rate limiting issues\n- Lower network overhead\n\n## Limitations\n- Maximum 100 records per request\n- Total request size must be under 1MB",
+    "category": "performance",
+    "tags": ["bulk", "api", "performance", "records"],
+    "difficulty": "intermediate",
+    "lastUpdated": "2025-09-06T00:00:00Z",
+    "relatedApis": ["/k/v1/records.json"],
+    "relatedFieldTypes": [],
+    "codeExamples": [
+      {
+        "language": "javascript",
+        "title": "Bulk record insertion",
+        "code": "const bulkInsert = async (records) => {\n  const chunks = [];\n  for (let i = 0; i < records.length; i += 100) {\n    chunks.push(records.slice(i, i + 100));\n  }\n  \n  const results = [];\n  for (const chunk of chunks) {\n    const result = await kintone.api(\n      kintone.api.url('/k/v1/records.json', true),\n      'POST',\n      { app: APP_ID, records: chunk }\n    );\n    results.push(result);\n  }\n  \n  return results;\n};",
+        "description": "Process large datasets in chunks of 100 records"
+      }
+    ]
+  },
+  {
+    "id": "error-handling",
+    "title": "Proper Error Handling in kintone Customizations",
+    "summary": "Implement robust error handling to improve user experience and debugging", 
+    "content": "# Error Handling Best Practices\n\n## API Error Handling\nAlways wrap API calls in try-catch blocks and handle different error types:\n\n```javascript\ntry {\n  const response = await kintone.api(url, method, params);\n  // Handle success\n} catch (error) {\n  if (error.code === 'GAIA_RE01') {\n    // Record not found\n    alert('Record not found');\n  } else if (error.code === 'CB_VA01') {\n    // Validation error\n    alert('Invalid data: ' + error.message);\n  } else {\n    // Generic error\n    console.error('API Error:', error);\n    alert('An error occurred. Please try again.');\n  }\n}\n```\n\n## Common Error Codes\n- `GAIA_RE01`: Record not found\n- `CB_VA01`: Validation error\n- `CB_AU01`: Permission denied\n- `CB_IL02`: Invalid field code\n\n## User-Friendly Messages\nProvide clear, actionable error messages instead of technical details.",
+    "category": "troubleshooting", 
+    "tags": ["error", "api", "debugging", "user-experience"],
+    "difficulty": "beginner",
+    "lastUpdated": "2025-09-06T00:00:00Z", 
+    "relatedApis": ["/k/v1/records.json", "/k/v1/record.json"],
+    "relatedFieldTypes": [],
+    "codeExamples": [
+      {
+        "language": "javascript",
+        "title": "Comprehensive error handler",
+        "code": "const handleKintoneError = (error) => {\n  const errorMessages = {\n    'GAIA_RE01': 'Record not found',\n    'CB_VA01': 'Invalid data provided',\n    'CB_AU01': 'Permission denied',\n    'CB_IL02': 'Invalid field specified'\n  };\n  \n  const message = errorMessages[error.code] || 'An unexpected error occurred';\n  console.error('Kintone Error:', {\n    code: error.code,\n    message: error.message,\n    details: error\n  });\n  \n  return message;\n};",
+        "description": "Reusable error handling utility function"
+      }
+    ]
+  },
+  {
+    "id": "field-validation",
+    "title": "Client-Side Field Validation",
+    "summary": "Validate user input before API calls to improve performance and user experience",
+    "content": "# Client-Side Validation\n\n## Why Validate on Client Side?\n- Immediate feedback to users\n- Reduced API calls and server load\n- Better user experience\n- Faster form interactions\n\n## Validation Strategies\n\n### Required Field Validation\n```javascript\nconst validateRequiredFields = (record, requiredFields) => {\n  const errors = [];\n  \n  requiredFields.forEach(fieldCode => {\n    const value = record[fieldCode]?.value;\n    if (!value || (Array.isArray(value) && value.length === 0)) {\n      errors.push(`${fieldCode} is required`);\n    }\n  });\n  \n  return errors;\n};\n```\n\n### Email Format Validation\n```javascript\nconst validateEmail = (email) => {\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return emailRegex.test(email);\n};\n```\n\n## Implementation Tips\n- Use HTML5 validation attributes when possible\n- Provide real-time feedback as users type\n- Show clear error messages near the relevant fields\n- Don't rely solely on client-side validation for security",
+    "category": "best-practices",
+    "tags": ["validation", "forms", "user-input", "client-side"],
+    "difficulty": "intermediate",
+    "lastUpdated": "2025-09-06T00:00:00Z",
+    "relatedApis": [],
+    "relatedFieldTypes": ["SINGLE_LINE_TEXT", "NUMBER"],
+    "codeExamples": [
+      {
+        "language": "javascript", 
+        "title": "Real-time field validation",
+        "code": "kintone.events.on('app.record.edit.change.email_field', (event) => {\n  const email = event.record.email_field.value;\n  const errorElement = document.getElementById('email-error');\n  \n  if (email && !validateEmail(email)) {\n    errorElement.textContent = 'Please enter a valid email address';\n    errorElement.style.display = 'block';\n  } else {\n    errorElement.style.display = 'none';\n  }\n  \n  return event;\n});",
+        "description": "Validate email format as user types"
+      }
+    ]
+  }
+]

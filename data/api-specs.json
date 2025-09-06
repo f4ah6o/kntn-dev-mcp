@@ -1,0 +1,105 @@
+[
+  {
+    "id": "get-records",
+    "name": "Get Records",
+    "method": "GET", 
+    "endpoint": "/k/v1/records.json",
+    "description": "Get records from a kintone app",
+    "parameters": [
+      {
+        "name": "app",
+        "type": "number", 
+        "required": true,
+        "description": "App ID"
+      },
+      {
+        "name": "query",
+        "type": "string",
+        "required": false,
+        "description": "Query string to filter records"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": 200,
+        "description": "Success",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "records": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    ],
+    "examples": [
+      {
+        "title": "Get all records",
+        "request": {
+          "app": 1
+        },
+        "response": {
+          "records": []
+        }
+      }
+    ],
+    "deprecated": false,
+    "version": "v1",
+    "category": "records"
+  },
+  {
+    "id": "post-records", 
+    "name": "Add Records",
+    "method": "POST",
+    "endpoint": "/k/v1/records.json", 
+    "description": "Add records to a kintone app",
+    "parameters": [
+      {
+        "name": "app",
+        "type": "number",
+        "required": true,
+        "description": "App ID"
+      },
+      {
+        "name": "records",
+        "type": "array", 
+        "required": true,
+        "description": "Array of records to add"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": 200,
+        "description": "Records added successfully",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ids": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    ],
+    "examples": [
+      {
+        "title": "Add single record",
+        "request": {
+          "app": 1,
+          "records": [
+            {
+              "field1": {"value": "test"}
+            }
+          ]
+        },
+        "response": {
+          "ids": ["1"]
+        }
+      }
+    ],
+    "deprecated": false,
+    "version": "v1", 
+    "category": "records"
+  }
+]
