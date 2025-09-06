@@ -12,7 +12,7 @@ export interface ResourceContent {
 	blob?: string;
 }
 
-import { FileStorageService } from "../services/FileStorageService.js";
+import type { FileStorageService } from "../services/FileStorageService.js";
 
 export class ResourceHandler {
 	private storage: FileStorageService;
@@ -46,7 +46,7 @@ export class ResourceHandler {
 
 	async readResource(uri: string): Promise<ResourceContent[]> {
 		try {
-			let data: any;
+			let data: unknown;
 
 			switch (uri) {
 				case "kintone://api/specifications":

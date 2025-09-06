@@ -1,5 +1,5 @@
-import { readFile, writeFile, access } from "fs/promises";
-import { join } from "path";
+import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export class FileStorageService {
 	private dataDir: string;
@@ -8,7 +8,7 @@ export class FileStorageService {
 		this.dataDir = dataDir;
 	}
 
-	async loadApiSpecs(): Promise<any[]> {
+	async loadApiSpecs(): Promise<unknown[]> {
 		try {
 			const filePath = join(this.dataDir, "api-specs.json");
 			const data = await readFile(filePath, "utf-8");
@@ -18,7 +18,7 @@ export class FileStorageService {
 		}
 	}
 
-	async loadFieldTypes(): Promise<any[]> {
+	async loadFieldTypes(): Promise<unknown[]> {
 		try {
 			const filePath = join(this.dataDir, "field-types.json");
 			const data = await readFile(filePath, "utf-8");
@@ -28,7 +28,7 @@ export class FileStorageService {
 		}
 	}
 
-	async loadDevelopmentTips(): Promise<any[]> {
+	async loadDevelopmentTips(): Promise<unknown[]> {
 		try {
 			const filePath = join(this.dataDir, "development-tips.json");
 			const data = await readFile(filePath, "utf-8");
@@ -38,17 +38,17 @@ export class FileStorageService {
 		}
 	}
 
-	async saveApiSpecs(specs: any[]): Promise<void> {
+	async saveApiSpecs(specs: unknown[]): Promise<void> {
 		const filePath = join(this.dataDir, "api-specs.json");
 		await writeFile(filePath, JSON.stringify(specs, null, 2));
 	}
 
-	async saveFieldTypes(types: any[]): Promise<void> {
+	async saveFieldTypes(types: unknown[]): Promise<void> {
 		const filePath = join(this.dataDir, "field-types.json");
 		await writeFile(filePath, JSON.stringify(types, null, 2));
 	}
 
-	async saveDevelopmentTips(tips: any[]): Promise<void> {
+	async saveDevelopmentTips(tips: unknown[]): Promise<void> {
 		const filePath = join(this.dataDir, "development-tips.json");
 		await writeFile(filePath, JSON.stringify(tips, null, 2));
 	}

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { SearchFieldTypes } from "../../src/tools/SearchFieldTypes";
 
 describe("search_field_types tool", () => {
@@ -9,7 +9,7 @@ describe("search_field_types tool", () => {
 
 		const result = await SearchFieldTypes.run({
 			fieldType: "SINGLE_LINE_TEXT",
-		} as any);
+		} as Record<string, unknown>);
 		expect(Array.isArray(result)).toBe(true);
 	});
 });

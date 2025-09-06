@@ -1,4 +1,9 @@
-export function handleError(error: Error): any {
+export type ErrorResult = {
+	isError: true;
+	content: Array<{ type: "text"; text: string }>;
+};
+
+export function handleError(error: Error): ErrorResult {
 	console.error("MCP Server Error:", error);
 
 	return {
@@ -12,7 +17,7 @@ export function handleError(error: Error): any {
 	};
 }
 
-export function handleValidationError(message: string): any {
+export function handleValidationError(message: string): ErrorResult {
 	return {
 		isError: true,
 		content: [
@@ -24,7 +29,7 @@ export function handleValidationError(message: string): any {
 	};
 }
 
-export function handleNotFound(resource: string): any {
+export function handleNotFound(resource: string): ErrorResult {
 	return {
 		isError: true,
 		content: [

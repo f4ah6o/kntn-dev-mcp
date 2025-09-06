@@ -14,7 +14,7 @@ export const SearchApiSpecs = {
 		required: ["query"],
 		additionalProperties: false,
 	},
-	async run(args: { query: string }): Promise<unknown[]> {
+	async run(args: Record<string, unknown>): Promise<unknown[]> {
 		void args;
 		return [];
 	},

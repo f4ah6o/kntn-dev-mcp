@@ -1,4 +1,4 @@
-import { FileStorageService } from "./FileStorageService.js";
+import type { FileStorageService } from "./FileStorageService.js";
 
 export class UpdateService {
 	private storage: FileStorageService;
@@ -48,7 +48,7 @@ export class UpdateService {
 		await this.storage.saveDevelopmentTips(mockTips);
 	}
 
-	async getUpdateInfo(): Promise<any> {
+	async getUpdateInfo(): Promise<unknown> {
 		return {
 			lastUpdate: new Date().toISOString(),
 			nextUpdate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),

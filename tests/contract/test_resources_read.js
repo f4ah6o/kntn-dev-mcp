@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { MCPServer } from "../../src/server/MCPServer";
 describe("MCP resources read contract", () => {
 	it("returns content list with uri and mimeType for a known resource", async () => {

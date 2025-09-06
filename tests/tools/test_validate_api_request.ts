@@ -11,7 +11,7 @@ describe("validate_api_request tool", () => {
 			endpoint: "/k/v1/records.json",
 			method: "POST",
 			requestBody: { app: 1, records: [] },
-		} as any);
+		} as Record<string, unknown>);
 		expect(typeof result).toBe("object");
 	});
 });

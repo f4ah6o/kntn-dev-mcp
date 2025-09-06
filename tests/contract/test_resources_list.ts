@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { MCPServer } from "../../src/server/MCPServer";
 import { FileStorageService } from "../../src/services/FileStorageService";
 import { UpdateService } from "../../src/services/UpdateService";
@@ -14,7 +14,7 @@ describe("MCP resources list contract", () => {
 		expect(response).toHaveProperty("resources");
 		expect(Array.isArray(response.resources)).toBe(true);
 		if (response.resources.length > 0) {
-			const r = response.resources[0] as any;
+			const r = response.resources[0] as { uri: unknown; name: unknown };
 			expect(typeof r.uri).toBe("string");
 			expect(typeof r.name).toBe("string");
 		}

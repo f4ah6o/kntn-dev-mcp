@@ -11,11 +11,11 @@ export class GetApiEndpoint {
 		required: ["endpoint", "method"],
 	};
 
-	static async run(args: any): Promise<any> {
+	static async run(args: Record<string, unknown>): Promise<unknown> {
 		// Stub implementation - will be filled in during actual implementation
 		return {
-			endpoint: args.endpoint,
-			method: args.method,
+			endpoint: (args as { endpoint?: unknown }).endpoint,
+			method: (args as { method?: unknown }).method,
 			description: "Mock API endpoint details",
 		};
 	}

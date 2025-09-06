@@ -10,7 +10,7 @@ export class GetUpdateInfo {
 		},
 	};
 
-	static async run(args: any): Promise<any> {
+	static async run(_args: Record<string, unknown>): Promise<unknown> {
 		// Stub implementation - will be filled in during actual implementation
 		return {
 			lastUpdate: new Date().toISOString(),

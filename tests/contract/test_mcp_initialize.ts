@@ -1,7 +1,8 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { MCPServer } from "../../src/server/MCPServer";
 import { FileStorageService } from "../../src/services/FileStorageService";
 import { UpdateService } from "../../src/services/UpdateService";
+import type { InitializeRequest } from "../../src/server/MCPServer";
 
 describe("MCP initialize contract", () => {
 	it("returns protocolVersion, capabilities, and serverInfo", async () => {
@@ -19,7 +20,7 @@ describe("MCP initialize contract", () => {
 		// Act
 		// Implementation should satisfy the contract in
 		// specs/001-kintone-customize-mcp/contracts/mcp-server.json
-		const response = await server.initialize(request as any);
+		const response = await server.initialize(request as InitializeRequest);
 
 		// Assert
 		expect(response).toHaveProperty("protocolVersion", "2025-03-26");

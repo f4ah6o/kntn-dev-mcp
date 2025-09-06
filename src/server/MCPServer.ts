@@ -19,20 +19,16 @@ export interface InitializeResponse {
 	};
 }
 
+import type { FileStorageService } from "../services/FileStorageService.js";
+import type { UpdateService } from "../services/UpdateService.js";
 import { ResourceHandler } from "./ResourceHandler.js";
 import { ToolHandler } from "./ToolHandler.js";
-import { FileStorageService } from "../services/FileStorageService.js";
-import { UpdateService } from "../services/UpdateService.js";
 
 export class MCPServer {
 	private resources: ResourceHandler;
 	private tools: ToolHandler;
-	private storage: FileStorageService;
-	private updateService: UpdateService;
 
 	constructor(storage: FileStorageService, updateService: UpdateService) {
-		this.storage = storage;
-		this.updateService = updateService;
 		this.resources = new ResourceHandler(storage);
 		this.tools = new ToolHandler(storage, updateService);
 	}
@@ -68,9 +64,7 @@ export class MCPServer {
 		return { resources };
 	}
 
-	async readResource(request: {
-		uri: string;
-	}): Promise<{
+	async readResource(request: { uri: string }): Promise<{
 		contents: Array<{
 			uri: string;
 			mimeType: string;
