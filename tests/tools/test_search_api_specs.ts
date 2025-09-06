@@ -1,14 +1,13 @@
-import { describe, it, expect } from 'vitest';
-import { SearchApiSpecs } from '../../src/tools/SearchApiSpecs';
+import { describe, it, expect } from "vitest";
+import { SearchApiSpecs } from "../../src/tools/SearchApiSpecs";
 
-describe('search_api_specs tool', () => {
-  it('exposes name, inputSchema, and run(query) returns array', async () => {
-    expect(SearchApiSpecs.name).toBe('search_api_specs');
-    expect(typeof SearchApiSpecs.description).toBe('string');
-    expect(typeof SearchApiSpecs.inputSchema).toBe('object');
+describe("search_api_specs tool", () => {
+	it("exposes name, inputSchema, and run(query) returns array", async () => {
+		expect(SearchApiSpecs.name).toBe("search_api_specs");
+		expect(typeof SearchApiSpecs.description).toBe("string");
+		expect(typeof SearchApiSpecs.inputSchema).toBe("object");
 
-    const result = await SearchApiSpecs.run({ query: 'records' } as any);
-    expect(Array.isArray(result)).toBe(true);
-  });
+		const result = await SearchApiSpecs.run({ query: "records" } as any);
+		expect(Array.isArray(result)).toBe(true);
+	});
 });
-

@@ -1,139 +1,142 @@
 [
-  {
-    "type": "SINGLE_LINE_TEXT",
-    "name": "Single-line text",
-    "description": "A field for inputting a single line of text",
-    "properties": [
-      {
-        "name": "maxLength",
-        "type": "number",
-        "required": false,
-        "description": "Maximum length of text",
-        "defaultValue": 255
-      },
-      {
-        "name": "defaultValue",
-        "type": "string", 
-        "required": false,
-        "description": "Default value for the field"
-      }
-    ],
-    "constraints": [
-      {
-        "type": "maxLength",
-        "value": 255,
-        "message": "Text must be 255 characters or less"
-      }
-    ],
-    "supportedOperators": ["=", "!=", "like", "not like"],
-    "examples": [
-      {
-        "title": "Basic text field",
-        "configuration": {
-          "type": "SINGLE_LINE_TEXT",
-          "code": "text_field",
-          "label": "Name"
-        },
-        "usage": "Store names, titles, or short descriptions"
-      }
-    ],
-    "compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
-    "limitations": ["Cannot contain line breaks"]
-  },
-  {
-    "type": "NUMBER",
-    "name": "Number",
-    "description": "A field for inputting numeric values",
-    "properties": [
-      {
-        "name": "minValue", 
-        "type": "number",
-        "required": false,
-        "description": "Minimum allowed value"
-      },
-      {
-        "name": "maxValue",
-        "type": "number",
-        "required": false, 
-        "description": "Maximum allowed value"
-      },
-      {
-        "name": "displayScale",
-        "type": "number",
-        "required": false,
-        "description": "Number of decimal places to display",
-        "defaultValue": 0
-      }
-    ],
-    "constraints": [
-      {
-        "type": "range",
-        "value": {"min": -99999999999, "max": 99999999999},
-        "message": "Number must be within valid range"
-      }
-    ],
-    "supportedOperators": ["=", "!=", ">", ">=", "<", "<="],
-    "examples": [
-      {
-        "title": "Currency field",
-        "configuration": {
-          "type": "NUMBER", 
-          "code": "price",
-          "label": "Price",
-          "displayScale": 2
-        },
-        "usage": "Store monetary amounts or quantities"
-      }
-    ],
-    "compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
-    "limitations": ["Maximum 11 digits before decimal point"]
-  },
-  {
-    "type": "LOOKUP",
-    "name": "Lookup",
-    "description": "A field that references data from another app",
-    "properties": [
-      {
-        "name": "relatedApp", 
-        "type": "object",
-        "required": true,
-        "description": "Configuration for the related app"
-      },
-      {
-        "name": "relatedKeyField",
-        "type": "string",
-        "required": true,
-        "description": "Field code in the related app to use as key"
-      },
-      {
-        "name": "copyFields",
-        "type": "array",
-        "required": false,
-        "description": "Fields to copy from the related record"
-      }
-    ],
-    "constraints": [
-      {
-        "type": "required_relation",
-        "value": "Must reference valid app and field",
-        "message": "Related app and key field must exist"
-      }
-    ],
-    "supportedOperators": ["=", "!=", "in", "not in"],
-    "examples": [
-      {
-        "title": "Customer lookup",
-        "configuration": {
-          "type": "LOOKUP",
-          "code": "customer",
-          "label": "Customer",
-          "relatedApp": {"app": "5"},
-          "relatedKeyField": "customer_id"
-        },
-        "usage": "Reference customer data from a master app"
-      }
-    ],
-    "compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
-    "limitations": ["Cannot reference circular relationships", "Maximum 100 copy fields"]
-  }
+	{
+		"type": "SINGLE_LINE_TEXT",
+		"name": "Single-line text",
+		"description": "A field for inputting a single line of text",
+		"properties": [
+			{
+				"name": "maxLength",
+				"type": "number",
+				"required": false,
+				"description": "Maximum length of text",
+				"defaultValue": 255
+			},
+			{
+				"name": "defaultValue",
+				"type": "string",
+				"required": false,
+				"description": "Default value for the field"
+			}
+		],
+		"constraints": [
+			{
+				"type": "maxLength",
+				"value": 255,
+				"message": "Text must be 255 characters or less"
+			}
+		],
+		"supportedOperators": ["=", "!=", "like", "not like"],
+		"examples": [
+			{
+				"title": "Basic text field",
+				"configuration": {
+					"type": "SINGLE_LINE_TEXT",
+					"code": "text_field",
+					"label": "Name"
+				},
+				"usage": "Store names, titles, or short descriptions"
+			}
+		],
+		"compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
+		"limitations": ["Cannot contain line breaks"]
+	},
+	{
+		"type": "NUMBER",
+		"name": "Number",
+		"description": "A field for inputting numeric values",
+		"properties": [
+			{
+				"name": "minValue",
+				"type": "number",
+				"required": false,
+				"description": "Minimum allowed value"
+			},
+			{
+				"name": "maxValue",
+				"type": "number",
+				"required": false,
+				"description": "Maximum allowed value"
+			},
+			{
+				"name": "displayScale",
+				"type": "number",
+				"required": false,
+				"description": "Number of decimal places to display",
+				"defaultValue": 0
+			}
+		],
+		"constraints": [
+			{
+				"type": "range",
+				"value": { "min": -99999999999, "max": 99999999999 },
+				"message": "Number must be within valid range"
+			}
+		],
+		"supportedOperators": ["=", "!=", ">", ">=", "<", "<="],
+		"examples": [
+			{
+				"title": "Currency field",
+				"configuration": {
+					"type": "NUMBER",
+					"code": "price",
+					"label": "Price",
+					"displayScale": 2
+				},
+				"usage": "Store monetary amounts or quantities"
+			}
+		],
+		"compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
+		"limitations": ["Maximum 11 digits before decimal point"]
+	},
+	{
+		"type": "LOOKUP",
+		"name": "Lookup",
+		"description": "A field that references data from another app",
+		"properties": [
+			{
+				"name": "relatedApp",
+				"type": "object",
+				"required": true,
+				"description": "Configuration for the related app"
+			},
+			{
+				"name": "relatedKeyField",
+				"type": "string",
+				"required": true,
+				"description": "Field code in the related app to use as key"
+			},
+			{
+				"name": "copyFields",
+				"type": "array",
+				"required": false,
+				"description": "Fields to copy from the related record"
+			}
+		],
+		"constraints": [
+			{
+				"type": "required_relation",
+				"value": "Must reference valid app and field",
+				"message": "Related app and key field must exist"
+			}
+		],
+		"supportedOperators": ["=", "!=", "in", "not in"],
+		"examples": [
+			{
+				"title": "Customer lookup",
+				"configuration": {
+					"type": "LOOKUP",
+					"code": "customer",
+					"label": "Customer",
+					"relatedApp": { "app": "5" },
+					"relatedKeyField": "customer_id"
+				},
+				"usage": "Reference customer data from a master app"
+			}
+		],
+		"compatibleApis": ["/k/v1/records.json", "/k/v1/record.json"],
+		"limitations": [
+			"Cannot reference circular relationships",
+			"Maximum 100 copy fields"
+		]
+	}
 ]
