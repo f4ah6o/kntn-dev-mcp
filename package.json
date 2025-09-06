@@ -1,63 +1,63 @@
 {
-	"name": "kntn-dev-mcp",
-	"version": "1.0.1",
-	"description": "MCP server providing comprehensive kintone development support including API specs, field types, and development tips",
-	"license": "MIT",
-	"type": "module",
-	"main": "./dist/index.js",
-	"bin": {
-		"kntn-dev-mcp": "./dist/index.js"
-	},
-	"files": [
-		"dist/",
-		"data/",
-		"README.md",
-		"LICENSE",
-		"package.json"
-	],
-	"keywords": [
-		"kintone",
-		"mcp",
-		"model-context-protocol",
-		"api",
-		"development",
-		"cybozu",
-		"customization"
-	],
-	"author": {
-		"name": "Kintone MCP Server",
-		"url": "https://github.com/f4ah6o/kntn-dev-mcp"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/f4ah6o/kntn-dev-mcp.git"
-	},
-	"homepage": "https://github.com/f4ah6o/kntn-dev-mcp#readme",
-	"bugs": {
-		"url": "https://github.com/f4ah6o/kntn-dev-mcp/issues"
-	},
-	"engines": {
-		"node": ">=18.0.0"
-	},
-	"scripts": {
-		"build": "tsc -p tsconfig.json",
-		"clean": "rimraf dist",
-		"start": "node dist/index.js",
-		"lint": "biome check src",
-		"format": "biome format --write .",
-		"test": "vitest run",
-		"test:watch": "vitest",
-		"prepublishOnly": "pnpm clean && pnpm build && pnpm test",
-		"prepack": "pnpm build"
-	},
-	"dependencies": {
-		"@modelcontextprotocol/sdk": "^1.17.5"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.2.3",
-		"@types/node": "^22.7.4",
-		"typescript": "^5.6.2",
-		"rimraf": "^6.0.1",
-		"vitest": "^2.1.3"
-	}
+  "name": "kntn-dev-mcp",
+  "version": "1.0.2",
+  "description": "MCP server providing comprehensive kintone development support including API specs, field types, and development tips",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "kntn-dev-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "data/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "keywords": [
+    "kintone",
+    "mcp",
+    "model-context-protocol",
+    "api",
+    "development",
+    "cybozu",
+    "customization"
+  ],
+  "author": {
+    "name": "Kintone MCP Server",
+    "url": "https://github.com/f4ah6o/kntn-dev-mcp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f4ah6o/kntn-dev-mcp.git"
+  },
+  "homepage": "https://github.com/f4ah6o/kntn-dev-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/f4ah6o/kntn-dev-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "start": "node dist/index.js",
+    "lint": "biome check src",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm clean && pnpm build && pnpm test",
+    "prepack": "pnpm build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.3",
+    "@types/node": "^22.7.4",
+    "typescript": "^5.6.2",
+    "rimraf": "^6.0.1",
+    "vitest": "^2.1.3"
+  }
 }
