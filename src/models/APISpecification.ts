@@ -1,4 +1,4 @@
-import type { Parameter, Response, Example } from './Supporting';
+import type { Parameter, Response, Example } from './Supporting.js';
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 

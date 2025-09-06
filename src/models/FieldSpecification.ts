@@ -1,4 +1,4 @@
-import type { FieldProperty, Constraint, FieldExample } from './Supporting';
+import type { FieldProperty, Constraint, FieldExample } from './Supporting.js';
 
 export interface FieldSpecification {
   type: string;

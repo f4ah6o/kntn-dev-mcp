@@ -1,4 +1,4 @@
-import type { CodeExample } from './Supporting';
+import type { CodeExample } from './Supporting.js';
 
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 

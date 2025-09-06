@@ -19,16 +19,27 @@ export interface InitializeResponse {
   };
 }
 
-import { ResourceHandler } from './ResourceHandler';
-import { ToolHandler } from './ToolHandler';
+import { ResourceHandler } from './ResourceHandler.js';
+import { ToolHandler } from './ToolHandler.js';
+import { FileStorageService } from '../services/FileStorageService.js';
+import { UpdateService } from '../services/UpdateService.js';
 
 export class MCPServer {
   private resources: ResourceHandler;
   private tools: ToolHandler;
+  private storage: FileStorageService;
+  private updateService: UpdateService;
 
-  constructor() {
-    this.resources = new ResourceHandler();
-    this.tools = new ToolHandler();
+  constructor(storage: FileStorageService, updateService: UpdateService) {
+    this.storage = storage;
+    this.updateService = updateService;
+    this.resources = new ResourceHandler(storage);
+    this.tools = new ToolHandler(storage, updateService);
+  }
+
+  async start(): Promise<void> {
+    // Initialize MCP server connection
+    console.log('MCP Server initialized with kintone development support');
   }
   async initialize(req: InitializeRequest): Promise<InitializeResponse> {
     return {

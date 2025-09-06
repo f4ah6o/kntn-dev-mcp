@@ -1,9 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import { MCPServer } from '../../src/server/MCPServer';
+import { FileStorageService } from '../../src/services/FileStorageService';
+import { UpdateService } from '../../src/services/UpdateService';
 
 describe('MCP initialize contract', () => {
   it('returns protocolVersion, capabilities, and serverInfo', async () => {
-    const server = new MCPServer();
+    const storage = new FileStorageService();
+    const updateService = new UpdateService(storage);
+    const server = new MCPServer(storage, updateService);
     const request = {
       protocolVersion: '2025-03-26',
       capabilities: {
