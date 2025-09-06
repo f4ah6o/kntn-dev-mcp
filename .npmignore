@@ -1,0 +1,45 @@
+# Source files
+src/
+tests/
+specs/
+scripts/
+templates/
+memory/
+
+# Configuration files
+.claude/
+tsconfig.json
+vitest.config.ts
+biome.json
+.gitignore
+
+# Development files
+node_modules/
+*.log
+.DS_Store
+.env*
+
+# Build artifacts (keep dist/)
+*.tsbuildinfo
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+
+# Lock files (keep for reproducible builds)
+# pnpm-lock.yaml
+
+# Documentation (README.md is included via files field)
+docs/
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/

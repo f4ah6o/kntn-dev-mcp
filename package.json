@@ -1,10 +1,44 @@
 {
-  "name": "kntn-dev-mcp",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Kintone Customize Development Support MCP Server",
-  "license": "UNLICENSED",
+  "name": "kintone-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server providing comprehensive kintone development support including API specs, field types, and development tips",
+  "license": "MIT",
   "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "kintone-mcp-server": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "data/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "keywords": [
+    "kintone",
+    "mcp",
+    "model-context-protocol", 
+    "api",
+    "development",
+    "cybozu",
+    "customization"
+  ],
+  "author": {
+    "name": "Kintone MCP Server",
+    "url": "https://github.com/your-username/kintone-mcp-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/kintone-mcp-server.git"
+  },
+  "homepage": "https://github.com/your-username/kintone-mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/kintone-mcp-server/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
@@ -12,7 +46,9 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm clean && pnpm build && pnpm test",
+    "prepack": "pnpm build"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.5"

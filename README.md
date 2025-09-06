@@ -12,6 +12,41 @@ An MCP (Model Context Protocol) server that provides comprehensive development s
 
 ## Installation
 
+### Option 1: Install from npm (Recommended)
+
+```bash
+# Install globally
+npm install -g kintone-mcp-server
+
+# Or using pnpm
+pnpm add -g kintone-mcp-server
+
+# Or using yarn
+yarn global add kintone-mcp-server
+
+# Run the server
+kintone-mcp-server
+```
+
+### Option 2: Install locally in project
+
+```bash
+# Install as dependency
+npm install kintone-mcp-server
+
+# Run via npx
+npx kintone-mcp-server
+
+# Or add to package.json scripts
+{
+  "scripts": {
+    "mcp-server": "kintone-mcp-server"
+  }
+}
+```
+
+### Option 3: Development setup
+
 ```bash
 # Clone the repository
 git clone <repository-url>
@@ -31,6 +66,30 @@ pnpm start
 
 Add the server to your MCP client configuration (e.g., Claude Desktop):
 
+### If installed globally:
+```json
+{
+  "mcpServers": {
+    "kintone-dev-support": {
+      "command": "kintone-mcp-server"
+    }
+  }
+}
+```
+
+### If installed locally:
+```json
+{
+  "mcpServers": {
+    "kintone-dev-support": {
+      "command": "npx",
+      "args": ["kintone-mcp-server"]
+    }
+  }
+}
+```
+
+### Development setup:
 ```json
 {
   "mcpServers": {
