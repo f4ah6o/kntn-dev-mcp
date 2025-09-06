@@ -1,6 +1,6 @@
 {
 	"name": "kntn-dev-mcp",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "MCP server providing comprehensive kintone development support including API specs, field types, and development tips",
 	"license": "MIT",
 	"type": "module",
