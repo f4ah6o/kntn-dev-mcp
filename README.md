@@ -16,31 +16,31 @@ An MCP (Model Context Protocol) server that provides comprehensive development s
 
 ```bash
 # Install globally
-npm install -g kintone-mcp-server
+npm install -g kntn-dev-mcp
 
 # Or using pnpm
-pnpm add -g kintone-mcp-server
+pnpm add -g kntn-dev-mcp
 
 # Or using yarn
-yarn global add kintone-mcp-server
+yarn global add kntn-dev-mcp
 
 # Run the server
-kintone-mcp-server
+kntn-dev-mcp
 ```
 
 ### Option 2: Install locally in project
 
 ```bash
 # Install as dependency
-npm install kintone-mcp-server
+npm install kntn-dev-mcp
 
 # Run via npx
-npx kintone-mcp-server
+npx kntn-dev-mcp
 
 # Or add to package.json scripts
 {
   "scripts": {
-    "mcp-server": "kintone-mcp-server"
+    "mcp-server": "kntn-dev-mcp"
   }
 }
 ```
@@ -50,7 +50,7 @@ npx kintone-mcp-server
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd kintone-mcp-server
+cd kntn-dev-mcp
 
 # Install dependencies
 pnpm install
@@ -71,7 +71,7 @@ Add the server to your MCP client configuration (e.g., Claude Desktop):
 {
   "mcpServers": {
     "kintone-dev-support": {
-      "command": "kintone-mcp-server"
+      "command": "kntn-dev-mcp"
     }
   }
 }
@@ -83,7 +83,7 @@ Add the server to your MCP client configuration (e.g., Claude Desktop):
   "mcpServers": {
     "kintone-dev-support": {
       "command": "npx",
-      "args": ["kintone-mcp-server"]
+      "args": ["kntn-dev-mcp"]
     }
   }
 }
@@ -95,7 +95,7 @@ Add the server to your MCP client configuration (e.g., Claude Desktop):
   "mcpServers": {
     "kintone-dev-support": {
       "command": "node",
-      "args": ["/path/to/kintone-mcp-server/dist/index.js"]
+      "args": ["/path/to/kntn-dev-mcp/dist/index.js"]
     }
   }
 }
