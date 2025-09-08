@@ -218,4 +218,4 @@ The server automatically synchronizes with official kintone resources:
 
 ## License
 
-[MIT](./LILICENSE)
+[MIT](./LICENSE)
